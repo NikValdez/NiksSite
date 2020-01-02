@@ -7,7 +7,7 @@ export default function({
   vAlign = "left",
   hAlign = "left",
   size = 1,
-  color = "#000000",
+  // color = "#000000",
   ...props
 }) {
   const font = useLoader(THREE.FontLoader, "/bold.blob")
@@ -18,9 +18,9 @@ export default function({
       height: 30,
       curveSegments: 32,
       bevelEnabled: true,
-      bevelThickness: 6,
+      bevelThickness: 3,
       bevelSize: 2.5,
-      bevelOffset: 0,
+      bevelOffset: -1,
       bevelSegments: 8,
     }),
     [font]
@@ -37,11 +37,22 @@ export default function({
     },
     [children]
   )
+
   return (
     <group {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
-      <mesh ref={mesh}>
+      <mesh
+        material={
+          new THREE.MeshBasicMaterial({
+            color: "#232e6c",
+            transparent: true,
+            opacity: 0.3,
+            wireframe: true,
+            wireframeLinewidth: 2,
+          })
+        }
+        ref={mesh}
+      >
         <textGeometry attach="geometry" args={[children, config]} />
-        <meshNormalMaterial attach="material" />
       </mesh>
     </group>
   )

@@ -1,6 +1,5 @@
 import React, { useCallback } from "react"
 import { useSpring, animated as a, interpolate } from "react-spring"
-import styled from "@emotion/styled"
 
 function Eagle(props) {
   const [{ st, xy }, set] = useSpring(() => ({ st: 0, xy: [0, 0] }))

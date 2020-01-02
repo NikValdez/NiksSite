@@ -7,7 +7,7 @@ function Big() {
   useFrame(
     ({ clock }) =>
       (ref.current.rotation.x = ref.current.rotation.y = ref.current.rotation.z =
-        Math.sin(clock.getElapsedTime()) * 0.3)
+        Math.sin(clock.getElapsedTime()) * 0.2)
   )
   return (
     <group ref={ref}>
@@ -20,8 +20,6 @@ function Big() {
 function Title() {
   return (
     <Canvas camera={{ position: [0, 0, 35] }} style={{ top: -250, left: -400 }}>
-      {/* <ambientLight intensity={2} /> */}
-      {/* <pointLight position={[40, 40, 40]} /> */}
       <Suspense fallback={null}>
         <Big />
       </Suspense>

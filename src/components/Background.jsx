@@ -1,23 +1,13 @@
 import * as THREE from "three"
 import React, { useRef, useEffect } from "react"
-import { apply, Canvas, useRender, useThree, extend } from "react-three-fiber"
+import { Canvas, useRender, useThree, extend } from "react-three-fiber"
 import { useSprings, a } from "@react-spring/three"
 import * as resources from "../resources/index"
-// import './styles.css'
-// Make extra stuff available as native-elements (<effectComposer />, etc.)
-// apply(resources)
+
 extend(resources)
 
 const number = 30
-const colors = [
-  "#232e6c",
-  "#2f72da",
-  "#19252e",
-  "#19252e",
-  "#84ade7",
-  "#868787",
-  "#fff",
-]
+const colors = ["#232e6c", "#2f72da", "#19252e", "#84ade7", "#868787", "#fff"]
 const random = () => {
   const r = Math.random()
   return {

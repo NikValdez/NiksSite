@@ -6,14 +6,13 @@ import { graphql, Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
-import Button from "components/_ui/Button"
+// import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
-// import Jumbo from "components/Jumbo"
-import Eagle from "components/Eagle"
 import Title from "components/Title"
 import Background from "components/Background"
+import EagleWrapper from "components/EagleWrapper"
 
 const Hero = styled("div")`
   background-size: cover;
@@ -22,10 +21,15 @@ const Hero = styled("div")`
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
   }
-  svg {
-    &:hover {
-      width: 200%;
-    }
+  svg path:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    transform: scale(1.2);
+  }
+
+  svg path {
+    transition: all 1s;
+    transform-origin: 25% 25%;
   }
 `
 
@@ -81,7 +85,7 @@ const RenderBody = ({ home, projects, meta }) => (
 
       <Title />
       <div style={{ position: "absolute", left: "30%", top: 40 }}>
-        <Eagle />
+        <EagleWrapper />
       </div>
     </Hero>
     <Section>
