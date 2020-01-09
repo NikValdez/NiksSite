@@ -5,6 +5,7 @@ import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import colors from "styles/colors"
 import PropTypes from "prop-types"
+import { useSpring, animated } from "react-spring"
 
 const ProjectCardContainer = styled(Link)`
   display: grid;
@@ -156,21 +157,41 @@ const ProjectCardImageContainer = styled("div")`
   }
 `
 
-const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
-  <ProjectCardContainer to={`/${uid}`}>
-    <ProjectCardContent className="ProjectCardContent">
-      <ProjectCardCategory>{category[0].text}</ProjectCardCategory>
-      <ProjectCardTitle>{title[0].text}</ProjectCardTitle>
-      <ProjectCardBlurb>{RichText.render(description)}</ProjectCardBlurb>
-      <ProjectCardAction className="ProjectCardAction">
-        Details <span>&#8594;</span>
-      </ProjectCardAction>
-    </ProjectCardContent>
-    <ProjectCardImageContainer className="ProjectCardImageContainer">
-      <img src={thumbnail.url} alt={title[0].text} />
-    </ProjectCardImageContainer>
-  </ProjectCardContainer>
-)
+const calc = (x, y) => [
+  -(y - window.innerHeight / 2) / 20,
+  (x - window.innerWidth / 2) / 20,
+  1.1,
+]
+const trans = (x, y, s) =>
+  `perspective(800px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
+
+const ProjectCard = ({ category, title, description, thumbnail, uid }) => {
+  const [props, set] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 1, tension: 650, friction: 80 },
+  }))
+  return (
+    <animated.div
+      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+      onMouseLeave={() => set({ xys: [0, 0, 1] })}
+      style={{ transform: props.xys.interpolate(trans) }}
+    >
+      <ProjectCardContainer to={`/${uid}`}>
+        <ProjectCardContent className="ProjectCardContent">
+          <ProjectCardCategory>{category[0].text}</ProjectCardCategory>
+          <ProjectCardTitle>{title[0].text}</ProjectCardTitle>
+          <ProjectCardBlurb>{RichText.render(description)}</ProjectCardBlurb>
+          <ProjectCardAction className="ProjectCardAction">
+            Details <span>&#8594;</span>
+          </ProjectCardAction>
+        </ProjectCardContent>
+        <ProjectCardImageContainer className="ProjectCardImageContainer">
+          <img src={thumbnail.url} alt={title[0].text} />
+        </ProjectCardImageContainer>
+      </ProjectCardContainer>
+    </animated.div>
+  )
+}
 
 export default ProjectCard
 

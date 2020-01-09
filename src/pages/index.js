@@ -102,9 +102,9 @@ const RenderBody = ({ home, projects, meta }) => (
         />
       ))}
 
-      <WorkAction to={"/photography"}>
+      {/* <WorkAction to={"/photography"}>
         See more photography <span>&#8594;</span>
-      </WorkAction>
+      </WorkAction> */}
     </Section>
     <Section>
       {RichText.render(home.about_title)}

@@ -70,6 +70,14 @@ const AboutActions = styled("div")`
   /* padding-top: 1em;
   padding-bottom: 3em; */
 
+  img:hover {
+    width: 100px !important;
+    height: 100px !important;
+    transform: translateX(0px) !important;
+    transition: all 150ms ease-in-out !important;
+    box-shadow: 5px -5px 5px rgba(0, 0, 0, 0.6);
+  }
+
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     padding: 0;
     grid-column: 1 / -1;
