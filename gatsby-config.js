@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Prist | Gatsby & Prismic Starter`,
-    description: `A starter powered by Gatsby and Prismic to showcase portfolios and blogs.`,
-    author: `Marguerite Roth | marguerite.io`,
+    title: `NiksBlog | Nik Cochran`,
+    description: `Nik Cochran's personal website .`,
+    author: `Nik Cochran`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -26,7 +26,7 @@ module.exports = {
     {
       resolve: "gatsby-source-prismic-graphql",
       options: {
-        repositoryName: "prist", // (REQUIRED, replace with your own)
+        repositoryName: "nikssite", // (REQUIRED, replace with your own)
         linkResolver: () => post => `/${post.uid}`,
       },
     },
@@ -34,7 +34,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-prismic-starter-prist`,
-        short_name: `prist`,
+        short_name: `Nik`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

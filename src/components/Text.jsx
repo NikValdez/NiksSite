@@ -43,7 +43,7 @@ export default function({
       <mesh
         material={
           new THREE.MeshBasicMaterial({
-            color: "#232e6c",
+            color: "#2f72da",
             transparent: true,
             opacity: 0.3,
             wireframe: true,

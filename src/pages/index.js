@@ -13,6 +13,7 @@ import ProjectCard from "components/ProjectCard"
 import Title from "components/Title"
 import Background from "components/Background"
 import EagleWrapper from "components/EagleWrapper"
+import Header from "components/Header"
 
 const Hero = styled("div")`
   background-size: cover;
@@ -80,6 +81,7 @@ const WorkAction = styled(Link)`
 const RenderBody = ({ home, projects, meta }) => (
   <>
     <Helmet title="Nik Cochran" />
+    <Header />
     <Hero>
       <Background />
 
@@ -99,8 +101,9 @@ const RenderBody = ({ home, projects, meta }) => (
           uid={project.node._meta.uid}
         />
       ))}
-      <WorkAction to={"/work"}>
-        See more work <span>&#8594;</span>
+
+      <WorkAction to={"/photography"}>
+        See more photography <span>&#8594;</span>
       </WorkAction>
     </Section>
     <Section>

@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
+import Logo from "./_ui/Logo"
 
 const HeaderContainer = styled("div")`
   padding-top: 2.75em;
@@ -58,14 +59,14 @@ const HeaderLinks = styled("div")`
 
     &:hover {
       &:after {
-        background: ${colors.blue500};
+        background: ${colors.blue200};
         transition: 100ms ease-in-out background;
       }
     }
 
     &.Link--is-active {
       &:after {
-        background: ${colors.blue500};
+        background: ${colors.blue200};
         transition: 100ms ease-in-out background;
       }
     }
@@ -75,9 +76,11 @@ const HeaderLinks = styled("div")`
 const Header = () => (
   <HeaderContainer>
     <HeaderContent>
-      <Link to="/"></Link>
+      <Link to="/">
+        <Logo />
+      </Link>
       <HeaderLinks>
-        <Link activeClassName="Link--is-active" to="/work">
+        <Link activeClassName="Link--is-active" to="/photography">
           Photography
         </Link>
         <Link activeClassName="Link--is-active" to="/blog">

@@ -1,8 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
-import Logo from "components/_ui/Logo"
 import Nik from "images/nikcochran.png"
 
 const FooterContainer = styled("div")`
@@ -54,12 +53,9 @@ const FooterSpooch = styled("img")`
 
 const Footer = () => (
   <FooterContainer>
-    <Link to="/">
-      <Logo />
-    </Link>
     <FooterAuthor href="https://github.com/NikValdez">
-      © {new Date().getFullYear()} — Nik Cochran
-      <FooterSpooch className="FooterSpooch" src={Nik} />
+      <FooterSpooch className="FooterSpooch" src={Nik} />©{" "}
+      {new Date().getFullYear()} — Nik Cochran
     </FooterAuthor>
   </FooterContainer>
 )
