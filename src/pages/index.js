@@ -14,6 +14,7 @@ import Title from "components/Title"
 import Background from "components/Background"
 import EagleWrapper from "components/EagleWrapper"
 import Header from "components/Header"
+import "../styles/global.css"
 
 const Hero = styled("div")`
   background-size: cover;

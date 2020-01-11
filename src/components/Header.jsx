@@ -4,6 +4,7 @@ import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
 import Logo from "./_ui/Logo"
+import { ThemeToggler } from "gatsby-plugin-dark-mode"
 
 const HeaderContainer = styled("div")`
   padding-top: 2.75em;
@@ -17,8 +18,8 @@ const HeaderContent = styled("div")`
 
 const HeaderLinks = styled("div")`
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-gap: 7em;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 3em;
   justify-content: flex-end;
   width: 100%;
   max-width: 200px;
@@ -86,6 +87,28 @@ const Header = () => (
         <Link activeClassName="Link--is-active" to="/blog">
           Blog
         </Link>
+        <ThemeToggler>
+          {({ theme, toggleTheme }) => (
+            <label class="checkbox-label">
+              <input
+                placeholder="input"
+                style={{ margin: 0, padding: 0 }}
+                type="checkbox"
+                onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
+                checked={theme === "dark"}
+              />
+              <span class="checkbox-custom rectangular"></span>
+              <span
+                style={{
+                  marginLeft: "30px",
+                  fontWeight: 500,
+                }}
+              >
+                Dark
+              </span>
+            </label>
+          )}
+        </ThemeToggler>
       </HeaderLinks>
     </HeaderContent>
   </HeaderContainer>

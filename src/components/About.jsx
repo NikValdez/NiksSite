@@ -5,6 +5,9 @@ import dimensions from "styles/dimensions"
 import { RichText } from "prismic-reactjs"
 import PropTypes from "prop-types"
 import NikProfile from "../images/NikProfile.jpg"
+import { StaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
+
 const AboutContainer = styled("div")`
   padding-top: 1em;
   display: grid;
@@ -71,8 +74,8 @@ const AboutActions = styled("div")`
   padding-bottom: 3em; */
 
   img:hover {
-    width: 100px !important;
-    height: 100px !important;
+    width: 130px !important;
+    height: 130px !important;
     transform: translateX(0px) !important;
     transition: all 150ms ease-in-out !important;
     box-shadow: 5px -5px 5px rgba(0, 0, 0, 0.6);
@@ -86,36 +89,57 @@ const AboutActions = styled("div")`
 `
 
 const About = ({ bio, socialLinks }) => (
-  <AboutContainer>
-    <AboutLinkContainer>
-      {socialLinks.map((social, i) => (
-        <AboutLink
-          key={i}
-          href={social.about_link[0].spans[0].data.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {social.about_link[0].text}
-          <span>&#8594;</span>
-        </AboutLink>
-      ))}
-    </AboutLinkContainer>
-    <AboutBio>{RichText.render(bio)}</AboutBio>
-    <AboutActions>
-      <img
-        src={NikProfile}
-        alt=""
-        style={{ width: 70, height: 70, borderRadius: 50, marginBottom: 20 }}
-      />
-      <a
-        href="mailto:nikcochran@gmail.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button className="Button--secondary">Email Me</Button>
-      </a>
-    </AboutActions>
-  </AboutContainer>
+  <StaticQuery
+    query={graphql`
+      query {
+        fileName: file(relativePath: { eq: "NikProfile.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 500) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      return (
+        <AboutContainer>
+          <AboutLinkContainer>
+            {socialLinks.map((social, i) => (
+              <AboutLink
+                key={i}
+                href={social.about_link[0].spans[0].data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {social.about_link[0].text}
+                <span>&#8594;</span>
+              </AboutLink>
+            ))}
+          </AboutLinkContainer>
+          <AboutBio>{RichText.render(bio)}</AboutBio>
+          <AboutActions>
+            <a
+              href="mailto:nikcochran@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Img
+                fluid={data.fileName.childImageSharp.fluid}
+                style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: 50,
+                  marginBottom: 20,
+                }}
+              />
+              <Button className="Button--secondary">Email Me</Button>
+            </a>
+          </AboutActions>
+        </AboutContainer>
+      )
+    }}
+  />
 )
 
 export default About

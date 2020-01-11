@@ -25,6 +25,7 @@ import EagleMountain from "../images/EagleMountainGreen.jpg"
 import EagleMountain2 from "../images/EagleMountain.jpg"
 import EagleWings from "../images/EagleWings.jpg"
 import Silloette from "../images/NikSilloett.jpg"
+import Img from "gatsby-image"
 
 export const photos = [
   {
