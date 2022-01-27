@@ -44,7 +44,7 @@
     "react-three-fiber": "^3.0.17",
     "smooth-scroll": "^16.0.3",
     "theme-ui": "^0.2.52",
-    "three": "^0.112.1",
+    "three": "^0.137.0",
     "three.meshline": "^1.2.0",
     "threejs-meshline": "^2.0.9"
   },
